@@ -22,14 +22,14 @@ defmodule EctoShortcuts do
         """
     end
 
-    quote do
+    quote bind_quoted: [repo: repo, model: model, default_preload: default_preload] do
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
 
-      @repo unquote(repo)
-      @model unquote(model)
-      @default_preload unquote(default_preload)
+      @repo repo
+      @model model
+      @default_preload default_preload
 
       def repo, do: @repo
       def model, do: @model || __MODULE__
